@@ -14,7 +14,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Today", systemImage: "list.bullet")
                 }
-            MenuView(meals: Meal.sampleData)
+            MenuView()
                 .tabItem {
                     Label("Menu", systemImage: "menucard")
                 }

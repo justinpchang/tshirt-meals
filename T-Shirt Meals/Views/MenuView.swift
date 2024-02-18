@@ -6,34 +6,37 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MenuView: View {
-    @StateObject var viewModel = MenuViewModel()
-    
-    let meals: [Meal]
+    @State var isShowingAddMenuMealView = false
+    @Query var meals: [Meal]
+    @Environment(\.modelContext) var modelContext;
     
     var body: some View {
         NavigationView {
             VStack {
-                List(meals) { meal in
-                    MealCardView(meal: meal)
+                List {
+                    ForEach(meals) { meal in
+                        MealCardView(meal: meal)
+                    }
                 }
             }
             .navigationTitle("Menu")
             .toolbar {
                 Button {
-                    viewModel.isShowingAddMenuMealView = true
+                    isShowingAddMenuMealView = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
-            .sheet(isPresented: $viewModel.isShowingAddMenuMealView) {
-                AddMenuMealView(isPresented: $viewModel.isShowingAddMenuMealView)
+            .sheet(isPresented: $isShowingAddMenuMealView) {
+                AddMenuMealView(isPresented: $isShowingAddMenuMealView)
             }
         }
     }
 }
 
 #Preview {
-    MenuView(meals: Meal.sampleData)
+    MenuView()
 }

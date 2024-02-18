@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct AddMenuMealView: View {
-    @StateObject var viewModel = AddMenuMealViewModel()
+    @Environment(\.modelContext) var modelContext;
+    
+    @State var title = ""
+    @State var recipe = ""
+    @State var size = Size.md
+    @State var showAlert = false
+    
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -20,14 +26,14 @@ struct AddMenuMealView: View {
             
             Form {
                 // Title
-                TextField("Title", text: $viewModel.title)
+                TextField("Title", text: $title)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
-                // Description
-                TextField("Description/Recipe", text: $viewModel.description)
+                // Recipe
+                TextField("Recipe", text: $recipe)
                 
                 // Size
-                Picker("Size", selection: $viewModel.size) {
+                Picker("Size", selection: $size) {
                     ForEach(Size.allCases, id: \.rawValue) { size in
                         Text(size.rawValue).tag(size)
                     }
@@ -36,19 +42,36 @@ struct AddMenuMealView: View {
                 
                 // Submit button
                 BackgroundButton(title: "Add to menu", background: .blue) {
-                    if viewModel.canSave {
-                        viewModel.save()
+                    if canSave {
+                        save()
                         isPresented = false
                     } else {
-                        viewModel.showAlert = true
+                        showAlert = true
                     }
                 }
                 .padding()
             }
-            .alert(isPresented: $viewModel.showAlert) {
+            .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text("Please fill in all fields."))
             }
         }
+    }
+    
+    func save() {
+        let meal = Meal(title: title, recipe: recipe, size: size)
+        modelContext.insert(meal)
+    }
+    
+    var canSave: Bool {
+        guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return false
+        }
+        
+        guard !recipe.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return false
+        }
+        
+        return true
     }
 }
 
