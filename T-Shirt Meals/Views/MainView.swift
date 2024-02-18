@@ -9,7 +9,16 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            TodayView()
+                .tabItem {
+                    Label("Today", systemImage: "list.bullet")
+                }
+            MenuView(meals: Meal.sampleData)
+                .tabItem {
+                    Label("Menu", systemImage: "menucard")
+                }
+        }
     }
 }
 

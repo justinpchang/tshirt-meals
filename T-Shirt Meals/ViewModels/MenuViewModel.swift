@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class MenuViewModel: ObservableObject {
+    @Published var isShowingAddMenuMealView = false
+    
+    init() {}
+}

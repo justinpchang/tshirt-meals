@@ -11,7 +11,7 @@ import SwiftUI
 struct T_Shirt_MealsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

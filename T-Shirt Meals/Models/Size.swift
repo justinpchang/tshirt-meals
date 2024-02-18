@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum Size: String, CaseIterable {
+    case xs = "X-Small"
+    case sm = "Small"
+    case md = "Medium"
+    case lg = "Large"
+    case xl = "X-Large"
+}

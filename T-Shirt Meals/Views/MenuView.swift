@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct MenuView: View {
+    @StateObject var viewModel = MenuViewModel()
+    
+    let meals: [Meal]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                List(meals) { meal in
+                    MealCardView(meal: meal)
+                }
+            }
+            .navigationTitle("Menu")
+            .toolbar {
+                Button {
+                    viewModel.isShowingAddMenuMealView = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $viewModel.isShowingAddMenuMealView) {
+                AddMenuMealView(isPresented: $viewModel.isShowingAddMenuMealView)
+            }
+        }
     }
 }
 
 #Preview {
-    MenuView()
+    MenuView(meals: Meal.sampleData)
 }
