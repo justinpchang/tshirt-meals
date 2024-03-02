@@ -29,9 +29,6 @@ struct AddMenuMealView: View {
                 TextField("Title", text: $title)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
-                // Recipe
-                TextField("Recipe", text: $recipe)
-                
                 // Size
                 Picker("Size", selection: $size) {
                     ForEach(Size.allCases, id: \.rawValue) { size in
@@ -39,6 +36,9 @@ struct AddMenuMealView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                
+                // Recipe
+                TextField("Recipe", text: $recipe, axis: .vertical)
                 
                 // Submit button
                 BackgroundButton(title: "Add to menu", background: .blue) {

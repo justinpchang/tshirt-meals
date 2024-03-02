@@ -14,6 +14,6 @@ struct T_Shirt_MealsApp: App {
         WindowGroup {
             MainView()
         }
-        .modelContainer(for: Meal.self)
+        .modelContainer(for: [Meal.self, Entry.self])
     }
 }

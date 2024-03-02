@@ -18,6 +18,12 @@
 		D135B6FE2B82581200FE4CB0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B6FD2B82581200FE4CB0 /* MainView.swift */; };
 		D135B7002B82641A00FE4CB0 /* AddMenuMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */; };
 		D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */; };
+		D17995DE2B8B81BD0029D35E /* EditMenuMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */; };
+		D1C4A04A2B93843A004A62ED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0492B93843A004A62ED /* Entry.swift */; };
+		D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A04E2B93857A004A62ED /* AddEntryView.swift */; };
+		D1C4A0542B938CCE004A62ED /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0532B938CCE004A62ED /* EditEntryView.swift */; };
+		D1C4A0562B93975D004A62ED /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0552B93975D004A62ED /* MealSelectionView.swift */; };
+		D1C4A0582B939C11004A62ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0572B939C11004A62ED /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +39,12 @@
 		D135B6FD2B82581200FE4CB0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuMealView.swift; sourceTree = "<group>"; };
 		D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundButton.swift; sourceTree = "<group>"; };
+		D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuMealView.swift; sourceTree = "<group>"; };
+		D1C4A0492B93843A004A62ED /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		D1C4A04E2B93857A004A62ED /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		D1C4A0532B938CCE004A62ED /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
+		D1C4A0552B93975D004A62ED /* MealSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectionView.swift; sourceTree = "<group>"; };
+		D1C4A0572B939C11004A62ED /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,8 @@
 		D135B6DF2B824FD900FE4CB0 /* T-Shirt Meals */ = {
 			isa = PBXGroup;
 			children = (
+				D1C4A0502B938893004A62ED /* Helpers */,
+				D1C4A04C2B93854A004A62ED /* Components */,
 				D135B6EE2B8250B800FE4CB0 /* Models */,
 				D135B6F52B8252B700FE4CB0 /* Views */,
 				D135B6E02B824FD900FE4CB0 /* T_Shirt_MealsApp.swift */,
@@ -87,6 +101,7 @@
 			children = (
 				D135B6F12B82517200FE4CB0 /* Meal.swift */,
 				D135B6F32B82519400FE4CB0 /* Size.swift */,
+				D1C4A0492B93843A004A62ED /* Entry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -94,14 +109,49 @@
 		D135B6F52B8252B700FE4CB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D135B6E22B824FD900FE4CB0 /* TodayView.swift */,
-				D135B6F72B8252DD00FE4CB0 /* MealCardView.swift */,
-				D135B6F92B8255B800FE4CB0 /* MenuView.swift */,
+				D1C4A04D2B938554004A62ED /* Today */,
+				D1C4A04B2B93852B004A62ED /* Menu */,
 				D135B6FD2B82581200FE4CB0 /* MainView.swift */,
-				D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */,
-				D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D1C4A04B2B93852B004A62ED /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D135B6F92B8255B800FE4CB0 /* MenuView.swift */,
+				D135B6F72B8252DD00FE4CB0 /* MealCardView.swift */,
+				D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */,
+				D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		D1C4A04C2B93854A004A62ED /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D1C4A04D2B938554004A62ED /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				D135B6E22B824FD900FE4CB0 /* TodayView.swift */,
+				D1C4A04E2B93857A004A62ED /* AddEntryView.swift */,
+				D1C4A0532B938CCE004A62ED /* EditEntryView.swift */,
+				D1C4A0552B93975D004A62ED /* MealSelectionView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		D1C4A0502B938893004A62ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D1C4A0572B939C11004A62ED /* Date.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,13 +225,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D135B7002B82641A00FE4CB0 /* AddMenuMealView.swift in Sources */,
+				D1C4A0582B939C11004A62ED /* Date.swift in Sources */,
 				D135B6F22B82517200FE4CB0 /* Meal.swift in Sources */,
 				D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */,
+				D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */,
 				D135B6FE2B82581200FE4CB0 /* MainView.swift in Sources */,
 				D135B6FA2B8255B800FE4CB0 /* MenuView.swift in Sources */,
 				D135B6F42B82519400FE4CB0 /* Size.swift in Sources */,
+				D1C4A0542B938CCE004A62ED /* EditEntryView.swift in Sources */,
+				D1C4A04A2B93843A004A62ED /* Entry.swift in Sources */,
 				D135B6F82B8252DD00FE4CB0 /* MealCardView.swift in Sources */,
 				D135B6E32B824FD900FE4CB0 /* TodayView.swift in Sources */,
+				D17995DE2B8B81BD0029D35E /* EditMenuMealView.swift in Sources */,
+				D1C4A0562B93975D004A62ED /* MealSelectionView.swift in Sources */,
 				D135B6E12B824FD900FE4CB0 /* T_Shirt_MealsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
