@@ -19,6 +19,19 @@ struct TodayView: View {
     @State var isShowingAddEntryView = false
     @State var isShowingDatePicker = false
     
+    var mealCountBySize: [Size: Int] {
+        var counts: [Size: Int] = [:]
+        
+        // Iterate through entries and count meals by size
+        entries.forEach { entry in
+            if Calendar.current.isDate(entry.date, inSameDayAs: date) {
+                counts[entry.meal.size, default: 0] += 1
+            }
+        }
+        
+        return counts
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -49,7 +62,18 @@ struct TodayView: View {
                         }
                     }
                     .padding(.horizontal, 20)
+                    .padding(.top, 20)
                     
+                    // Summary
+                    HStack {
+                        ForEach(Size.allCases, id: \.self) { size in
+                            if mealCountBySize[size] ?? 0 > 0 {
+                                size.tag(count: mealCountBySize[size]!)
+                            }
+                        }
+                    }.padding()
+                    
+                    // Entries
                     List {
                         ForEach(currentDayEntries) { entry in
                             ZStack {
@@ -67,7 +91,7 @@ struct TodayView: View {
                                     }
                                     Spacer()
                                     Text(entry.meal.size.rawValue)
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(entry.meal.size.color)
                                     
                                 }
                             }
