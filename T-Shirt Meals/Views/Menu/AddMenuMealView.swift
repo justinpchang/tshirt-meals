@@ -8,22 +8,29 @@
 import SwiftUI
 
 struct AddMenuMealView: View {
-    @Environment(\.modelContext) var modelContext;
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.presentationMode) var presentationMode
     
     @State var title = ""
     @State var recipe = ""
     @State var size = Size.md
     @State var showAlert = false
     
-    @Binding var isPresented: Bool
+    var meal: Meal?
+    var isEditing: Bool
+    var onSave: ((_ meal: Meal) -> Void)?
+    
+    init(meal: Meal? = nil, onSave: ((_ meal: Meal) -> Void)? = nil) {
+        self.meal = meal
+        self.isEditing = meal != nil
+        self.onSave = onSave
+        self._title = State(initialValue: meal?.title ?? "")
+        self._recipe = State(initialValue: meal?.recipe ?? "")
+        self._size = State(initialValue: meal?.size ?? Size.md)
+    }
     
     var body: some View {
         VStack {
-            Text("New Meal")
-                .font(.system(size: 32))
-                .bold()
-                .padding()
-            
             Form {
                 // Title
                 TextField("Title", text: $title)
@@ -41,10 +48,10 @@ struct AddMenuMealView: View {
                 TextField("Recipe", text: $recipe, axis: .vertical)
                 
                 // Submit button
-                BackgroundButton(title: "Add to menu", background: .blue) {
+                BackgroundButton(title: isEditing ? "Save to menu" : "Add to menu", background: .blue) {
                     if canSave {
                         save()
-                        isPresented = false
+                        presentationMode.wrappedValue.dismiss()
                     } else {
                         showAlert = true
                     }
@@ -58,8 +65,17 @@ struct AddMenuMealView: View {
     }
     
     func save() {
-        let meal = Meal(title: title, recipe: recipe, size: size)
-        modelContext.insert(meal)
+        if let existingMeal = meal {
+            existingMeal.title = title
+            existingMeal.recipe = recipe
+            existingMeal.size = size
+        } else {
+            let meal = Meal(title: title, recipe: recipe, size: size)
+            modelContext.insert(meal)
+            if onSave != nil {
+                onSave!(meal)
+            }
+        }
     }
     
     var canSave: Bool {
@@ -67,18 +83,6 @@ struct AddMenuMealView: View {
             return false
         }
         
-        guard !recipe.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return false
-        }
-        
         return true
     }
-}
-
-#Preview {
-    AddMenuMealView(isPresented: Binding(get: {
-        return true
-    }, set: { _ in
-        
-    }))
 }

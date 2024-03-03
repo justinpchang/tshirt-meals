@@ -53,7 +53,7 @@ struct TodayView: View {
                     List {
                         ForEach(currentDayEntries) { entry in
                             ZStack {
-                                NavigationLink(destination: Text("\(entry.meal.title)")) {
+                                NavigationLink(destination: AddEntryView(entry: entry).navigationBarTitle("Edit entry", displayMode: .inline)) {
                                     EmptyView()
                                 }
                                 .opacity(0.0)
@@ -76,22 +76,27 @@ struct TodayView: View {
                     }
                     .listStyle(.plain)
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                
+                // Add button
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
                         Button {
                             isShowingAddEntryView.toggle()
                         } label: {
-                            Image(systemName: "plus.circle")
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.blue)
                         }
+                        .padding(20)
                     }
-                }
-                .sheet(isPresented: $isShowingAddEntryView) {
-                    AddEntryView(isPresented: $isShowingAddEntryView)
                 }
                 
                 if isShowingDatePicker {
                     ZStack {
-                        Color(.darkGray)
+                        Color(.systemBackground)
                             .opacity(0.8)
                             .edgesIgnoringSafeArea(.all)
                             .onTapGesture {
@@ -117,10 +122,15 @@ struct TodayView: View {
                             .shadow(radius: 2)
                         }
                         .frame(maxWidth: .infinity, maxHeight: 500)
-                        .background(Color.white)
+                        .background(Color(.systemBackground))
                         .cornerRadius(15)
                         .shadow(radius: 10)
                     }
+                }
+            }
+            .sheet(isPresented: $isShowingAddEntryView) {
+                NavigationView {
+                    AddEntryView().navigationBarTitle("Add entry", displayMode: .inline)
                 }
             }
         }

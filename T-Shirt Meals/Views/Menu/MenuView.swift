@@ -24,9 +24,11 @@ struct MenuView: View {
                 List {
                     ForEach(Size.allCases, id: \.self) { size in
                         if !(mealsBySize[size]?.isEmpty ?? true) {
-                            Section(header: Text(size.rawValue)) {
+                            Section(header: HStack {
+                                Label(size.rawValue, systemImage: "tshirt").font(.headline).foregroundStyle(.primary)
+                            }) {
                                 ForEach(mealsBySize[size] ?? []) { meal in
-                                    NavigationLink(destination: EditMenuMealView(meal: meal)) {
+                                    NavigationLink(destination: AddMenuMealView(meal: meal).navigationBarTitle("Edit meal", displayMode: .inline)) {
                                         MealCardView(meal: meal)
                                     }
                                 }
@@ -35,6 +37,7 @@ struct MenuView: View {
                         }
                     }
                 }
+                .listStyle(.plain)
             }
             .navigationTitle("Menu")
             .toolbar {
@@ -45,7 +48,7 @@ struct MenuView: View {
                 }
             }
             .sheet(isPresented: $isShowingAddMenuMealView) {
-                AddMenuMealView(isPresented: $isShowingAddMenuMealView)
+                AddMenuMealView().navigationBarTitle("Add meal", displayMode: .inline)
             }
         }
     }

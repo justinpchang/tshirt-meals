@@ -20,28 +20,26 @@ struct MealSelectionView: View {
     @Binding var meal: Meal?
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Select Meal")
-                    .font(.headline)
-                
-                List {
-                    ForEach(Size.allCases, id: \.self) { size in
-                        if !(mealsBySize[size]?.isEmpty ?? true) {
-                            Section(header: Text(size.rawValue)) {
-                                ForEach(mealsBySize[size] ?? []) { _meal in
-                                    Text(_meal.title)
-                                    .onTapGesture {
-                                        meal = _meal
-                                        presentationMode.wrappedValue.dismiss()
-                                    }
+        VStack {
+            List {
+                ForEach(Size.allCases, id: \.self) { size in
+                    if !(mealsBySize[size]?.isEmpty ?? true) {
+                        Section(header: Text(size.rawValue)) {
+                            ForEach(mealsBySize[size] ?? []) { _meal in
+                                Text(_meal.title)
+                                .onTapGesture {
+                                    meal = _meal
+                                    presentationMode.wrappedValue.dismiss()
                                 }
                             }
                         }
                     }
                 }
-                .listStyle(.plain)
             }
+            .listStyle(.plain)
+        }
+        .onChange(of: meal) {
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }

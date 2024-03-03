@@ -16,54 +16,75 @@ struct AddEntryView: View {
     @State var meal: Meal?
     @State var showAlert = false
     
-    @Binding var isPresented: Bool
+    var entry: Entry?
+    var isEditing: Bool
+    
+    init(entry: Entry? = nil) {
+        self.entry = entry
+        self.isEditing = entry != nil
+        self._date = State(initialValue: entry?.date ?? Date.now)
+        self._meal = State(initialValue: entry?.meal)
+    }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Form {
-                    Section {
-                        DatePicker("Time", selection: $date, displayedComponents: [.date, .hourAndMinute])
-                            .datePickerStyle(.compact)
-                    }
-                    
-                    Section {
-                        NavigationLink(destination: MealSelectionView(meal: $meal)) {
-                            HStack {
-                                Text("Select Meal")
-                                Spacer()
-                                Text(meal?.title ?? "Choose a meal")
+        VStack {
+            Form {
+                Section {
+                    DatePicker("Time", selection: $date, displayedComponents: [.date, .hourAndMinute])
+                        .datePickerStyle(.compact)
+                }
+                
+                Section {
+                    NavigationLink(destination:
+                                    MealSelectionView(meal: $meal)
+                                    .navigationBarTitle("Select meal", displayMode: .inline)
+                                    .toolbar {
+                                        ToolbarItem(placement: .navigationBarTrailing) {
+                                            NavigationLink(destination:
+                                                            AddMenuMealView() { meal in
+                                                                self.meal = meal
+                                                            }
+                                                            .navigationBarTitle("Create meal", displayMode: .inline)
+                                            ) {
+                                                Text("Create")
+                                            }
+                                        }
+                                    }
+                    ) {
+                        HStack {
+                            if let meal = meal {
+                                Text("\(meal.title) (\(meal.size.rawValue))")
+                            } else {
+                                Text("Choose a meal")
                                     .foregroundColor(.gray)
                             }
                         }
                     }
                 }
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Error"), message: Text("Please fill in all fields."))
-                }
-            }
-            .navigationTitle("Add entry")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        if canSave {
-                            save()
-                            isPresented = false
-                        } else {
-                            showAlert = true
-                        }
-                    } label: {
-                        Text("Add")
+                
+                BackgroundButton(title: isEditing ? "Save" : "Add", background: .blue) {
+                    if canSave {
+                        save()
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        showAlert = true
                     }
                 }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text("Please fill in all fields."))
             }
         }
     }
     
     func save() {
-        let entry = Entry(date: date, meal: meal!)
-        modelContext.insert(entry)
+        if let existingEntry = entry {
+            existingEntry.date = date
+            existingEntry.meal = meal!
+        } else {
+            let entry = Entry(date: date, meal: meal!)
+            modelContext.insert(entry)
+        }
     }
     
     var canSave: Bool {
