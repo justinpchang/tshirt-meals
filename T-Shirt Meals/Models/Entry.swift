@@ -10,13 +10,13 @@ import SwiftData
 
 @Model
 class Entry: Identifiable {
-    var id: UUID
-    var date: Date
-    var meal: Meal
-    
-    init(id: UUID = UUID(), date: Date = .now, meal: Meal) {
-        self.id = id
-        self.date = date
-        self.meal = meal
-    }
+  var id: UUID
+  var date: Date
+  var meal: Meal
+
+  init(id: UUID = UUID(), date: Date = .now, meal: Meal) {
+    self.id = id
+    self.date = date
+    self.meal = meal
+  }
 }
