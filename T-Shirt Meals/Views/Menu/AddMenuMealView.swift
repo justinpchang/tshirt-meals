@@ -28,6 +28,7 @@ struct AddMenuMealView: View {
         self._title = State(initialValue: meal?.title ?? "")
         self._recipe = State(initialValue: meal?.recipe ?? "")
         self._size = State(initialValue: meal?.size ?? Size.md)
+        self._isInMenu = State(initialValue: true)
     }
     
     var body: some View {

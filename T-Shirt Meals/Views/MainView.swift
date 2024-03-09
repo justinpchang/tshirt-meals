@@ -22,6 +22,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Weight", systemImage: "chart.xyaxis.line")
                 }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
         }
     }
 }

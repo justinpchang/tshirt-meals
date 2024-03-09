@@ -20,6 +20,7 @@
 		D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */; };
 		D13FC1352B9CAE10004B3187 /* BodyWeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FC1342B9CAE10004B3187 /* BodyWeightEntry.swift */; };
 		D13FC1382B9CAE83004B3187 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FC1372B9CAE83004B3187 /* WeightView.swift */; };
+		D13FC13C2B9CBCE7004B3187 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FC13B2B9CBCE7004B3187 /* SettingsView.swift */; };
 		D17995DE2B8B81BD0029D35E /* EditMenuMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */; };
 		D1C4A04A2B93843A004A62ED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0492B93843A004A62ED /* Entry.swift */; };
 		D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A04E2B93857A004A62ED /* AddEntryView.swift */; };
@@ -44,6 +45,7 @@
 		D13FC1342B9CAE10004B3187 /* BodyWeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightEntry.swift; sourceTree = "<group>"; };
 		D13FC1372B9CAE83004B3187 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		D13FC1392B9CB549004B3187 /* T-Shirt Meals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "T-Shirt Meals.entitlements"; sourceTree = "<group>"; };
+		D13FC13B2B9CBCE7004B3187 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuMealView.swift; sourceTree = "<group>"; };
 		D1C4A0492B93843A004A62ED /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D1C4A04E2B93857A004A62ED /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		D135B6F52B8252B700FE4CB0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D13FC13A2B9CBCDB004B3187 /* Settings */,
 				D1C4A04D2B938554004A62ED /* Today */,
 				D1C4A04B2B93852B004A62ED /* Menu */,
 				D13FC1362B9CAE71004B3187 /* Weight */,
@@ -130,6 +133,14 @@
 				D13FC1372B9CAE83004B3187 /* WeightView.swift */,
 			);
 			path = Weight;
+			sourceTree = "<group>";
+		};
+		D13FC13A2B9CBCDB004B3187 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D13FC13B2B9CBCE7004B3187 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D1C4A04B2B93852B004A62ED /* Menu */ = {
@@ -243,6 +254,7 @@
 				D135B7002B82641A00FE4CB0 /* AddMenuMealView.swift in Sources */,
 				D13FC1382B9CAE83004B3187 /* WeightView.swift in Sources */,
 				D1C4A0582B939C11004A62ED /* Date.swift in Sources */,
+				D13FC13C2B9CBCE7004B3187 /* SettingsView.swift in Sources */,
 				D135B6F22B82517200FE4CB0 /* Meal.swift in Sources */,
 				D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */,
 				D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */,
@@ -407,7 +419,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinpchang.T-Shirt-Meals";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -445,7 +457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.justinpchang.T-Shirt-Meals";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
