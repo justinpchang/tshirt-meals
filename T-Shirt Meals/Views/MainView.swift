@@ -18,6 +18,10 @@ struct MainView: View {
                 .tabItem {
                     Label("Menu", systemImage: "menucard")
                 }
+            WeightView()
+                .tabItem {
+                    Label("Weight", systemImage: "chart.xyaxis.line")
+                }
         }
     }
 }

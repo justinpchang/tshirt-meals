@@ -18,6 +18,8 @@
 		D135B6FE2B82581200FE4CB0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B6FD2B82581200FE4CB0 /* MainView.swift */; };
 		D135B7002B82641A00FE4CB0 /* AddMenuMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */; };
 		D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */; };
+		D13FC1352B9CAE10004B3187 /* BodyWeightEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FC1342B9CAE10004B3187 /* BodyWeightEntry.swift */; };
+		D13FC1382B9CAE83004B3187 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13FC1372B9CAE83004B3187 /* WeightView.swift */; };
 		D17995DE2B8B81BD0029D35E /* EditMenuMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */; };
 		D1C4A04A2B93843A004A62ED /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0492B93843A004A62ED /* Entry.swift */; };
 		D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A04E2B93857A004A62ED /* AddEntryView.swift */; };
@@ -39,6 +41,8 @@
 		D135B6FD2B82581200FE4CB0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D135B6FF2B82641A00FE4CB0 /* AddMenuMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuMealView.swift; sourceTree = "<group>"; };
 		D135B7042B8269B500FE4CB0 /* BackgroundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundButton.swift; sourceTree = "<group>"; };
+		D13FC1342B9CAE10004B3187 /* BodyWeightEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightEntry.swift; sourceTree = "<group>"; };
+		D13FC1372B9CAE83004B3187 /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		D17995DD2B8B81BD0029D35E /* EditMenuMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMenuMealView.swift; sourceTree = "<group>"; };
 		D1C4A0492B93843A004A62ED /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		D1C4A04E2B93857A004A62ED /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				D135B6F12B82517200FE4CB0 /* Meal.swift */,
 				D135B6F32B82519400FE4CB0 /* Size.swift */,
 				D1C4A0492B93843A004A62ED /* Entry.swift */,
+				D13FC1342B9CAE10004B3187 /* BodyWeightEntry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -111,9 +116,18 @@
 			children = (
 				D1C4A04D2B938554004A62ED /* Today */,
 				D1C4A04B2B93852B004A62ED /* Menu */,
+				D13FC1362B9CAE71004B3187 /* Weight */,
 				D135B6FD2B82581200FE4CB0 /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D13FC1362B9CAE71004B3187 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				D13FC1372B9CAE83004B3187 /* WeightView.swift */,
+			);
+			path = Weight;
 			sourceTree = "<group>";
 		};
 		D1C4A04B2B93852B004A62ED /* Menu */ = {
@@ -225,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D135B7002B82641A00FE4CB0 /* AddMenuMealView.swift in Sources */,
+				D13FC1382B9CAE83004B3187 /* WeightView.swift in Sources */,
 				D1C4A0582B939C11004A62ED /* Date.swift in Sources */,
 				D135B6F22B82517200FE4CB0 /* Meal.swift in Sources */,
 				D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */,
@@ -232,6 +247,7 @@
 				D135B6FE2B82581200FE4CB0 /* MainView.swift in Sources */,
 				D135B6FA2B8255B800FE4CB0 /* MenuView.swift in Sources */,
 				D135B6F42B82519400FE4CB0 /* Size.swift in Sources */,
+				D13FC1352B9CAE10004B3187 /* BodyWeightEntry.swift in Sources */,
 				D1C4A0542B938CCE004A62ED /* EditEntryView.swift in Sources */,
 				D1C4A04A2B93843A004A62ED /* Entry.swift in Sources */,
 				D135B6F82B8252DD00FE4CB0 /* MealCardView.swift in Sources */,

@@ -14,12 +14,14 @@ class Meal: Identifiable {
     var title: String
     var recipe: String
     var size: Size
+    var isInMenu: Bool
     
-    init(id: UUID = UUID(), title: String, recipe: String, size: Size) {
+    init(id: UUID = UUID(), title: String, recipe: String, size: Size, isInMenu: Bool = true) {
         self.id = id
         self.title = title
         self.recipe = recipe
         self.size = size
+        self.isInMenu = isInMenu
     }
 }
 

@@ -13,7 +13,8 @@ struct MenuView: View {
     
     @Query var meals: [Meal]
     var mealsBySize: [Size: [Meal]] {
-        return Dictionary(grouping: meals, by: { $0.size })
+        let menuMeals = meals.filter { $0.isInMenu }
+        return Dictionary(grouping: menuMeals, by: { $0.size })
     }
     
     @State var isShowingAddMenuMealView = false

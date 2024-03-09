@@ -14,6 +14,7 @@ struct AddMenuMealView: View {
     @State var title = ""
     @State var recipe = ""
     @State var size = Size.md
+    @State var isInMenu = true
     @State var showAlert = false
     
     var meal: Meal?
@@ -47,8 +48,13 @@ struct AddMenuMealView: View {
                 // Recipe
                 TextField("Recipe", text: $recipe, axis: .vertical)
                 
+                if onSave != nil {
+                    Toggle("Save to menu?", isOn: $isInMenu)
+                        .toggleStyle(SwitchToggleStyle())
+                }
+                
                 // Submit button
-                BackgroundButton(title: isEditing ? "Save to menu" : "Add to menu", background: .blue) {
+                BackgroundButton(title: isEditing ? "Save to menu" : onSave != nil ? "Add" : "Add to menu", background: .blue) {
                     if canSave {
                         save()
                         presentationMode.wrappedValue.dismiss()
@@ -70,7 +76,7 @@ struct AddMenuMealView: View {
             existingMeal.recipe = recipe
             existingMeal.size = size
         } else {
-            let meal = Meal(title: title, recipe: recipe, size: size)
+            let meal = Meal(title: title, recipe: recipe, size: size, isInMenu: isInMenu)
             modelContext.insert(meal)
             if onSave != nil {
                 onSave!(meal)
