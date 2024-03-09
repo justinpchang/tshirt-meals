@@ -20,11 +20,6 @@ struct WeightView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    BackgroundButton(title: "Log weigh-in", background: .green) {
-                        self.isShowingInput = true
-                    }
-                    .frame(width: 160, height: 40)
-                    
                     List {
                         ForEach(weights) { entry in
                             HStack {
@@ -36,6 +31,14 @@ struct WeightView: View {
                                     .font(.headline)
                             }
                         }
+                    }
+                }
+                .navigationTitle("Weight")
+                .toolbar {
+                    Button {
+                        isShowingInput = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
                 
