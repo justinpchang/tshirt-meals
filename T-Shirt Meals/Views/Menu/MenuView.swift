@@ -12,12 +12,9 @@ struct MenuView: View {
     @Environment(\.modelContext) var modelContext;
     
     @Query var meals: [Meal]
-    var mealsBySize: [Size: [Meal]] {
-        let menuMeals = meals.filter { $0.isInMenu }
-        return Dictionary(grouping: menuMeals, by: { $0.size })
-    }
     
     @State var isShowingAddMenuMealView = false
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
@@ -39,6 +36,7 @@ struct MenuView: View {
                     }
                 }
                 .listStyle(.plain)
+                .searchable(text: $searchText)
             }
             .navigationTitle("Menu")
             .toolbar {
@@ -52,6 +50,19 @@ struct MenuView: View {
                 AddMenuMealView().navigationBarTitle("Add meal", displayMode: .inline)
             }
         }
+    }
+    
+    var searchResults: [Meal] {
+        if searchText.isEmpty {
+            return meals
+        } else {
+            return meals.filter { $0.title.contains(searchText) }
+        }
+    }
+    
+    var mealsBySize: [Size: [Meal]] {
+        let menuMeals = searchResults.filter { $0.isInMenu }
+        return Dictionary(grouping: menuMeals, by: { $0.size })
     }
     
     func deleteMeals(_ indexSet: IndexSet) {

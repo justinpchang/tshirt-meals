@@ -13,10 +13,8 @@ struct MealSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Query var meals: [Meal]
-    var mealsBySize: [Size: [Meal]] {
-        let menuMeals = meals.filter { $0.isInMenu }
-        return Dictionary(grouping: menuMeals, by: { $0.size })
-    }
+    
+    @State var searchText = ""
     
     @Binding var meal: Meal?
     
@@ -38,9 +36,23 @@ struct MealSelectionView: View {
                 }
             }
             .listStyle(.plain)
+            .searchable(text: $searchText)
         }
         .onChange(of: meal) {
             presentationMode.wrappedValue.dismiss()
         }
+    }
+    
+    var searchResults: [Meal] {
+        if searchText.isEmpty {
+            return meals
+        } else {
+            return meals.filter { $0.title.contains(searchText) }
+        }
+    }
+    
+    var mealsBySize: [Size: [Meal]] {
+        let menuMeals = searchResults.filter { $0.isInMenu }
+        return Dictionary(grouping: menuMeals, by: { $0.size })
     }
 }
