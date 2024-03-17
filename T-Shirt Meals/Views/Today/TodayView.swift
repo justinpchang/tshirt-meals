@@ -12,6 +12,7 @@ let ONE_DAY = 24.0 * 60 * 60
 
 struct TodayView: View {
     @Environment(\.modelContext) var modelContext;
+    @Environment(\.scenePhase) var scenePhase
     
     @Query(sort: \Entry.date, order: .reverse) var entries: [Entry]
     
@@ -158,6 +159,9 @@ struct TodayView: View {
                 }
             }
         }
+        .onAppear {
+            updateToToday()
+        }
     }
     
     var dateLabel: String {
@@ -182,6 +186,13 @@ struct TodayView: View {
         for index in indexSet {
             let entry = entries[index]
             modelContext.delete(entry)
+        }
+    }
+    
+    func updateToToday() {
+        let today = Date()
+        if Calendar.current.isDate(date, inSameDayAs: today) == false {
+            date = today
         }
     }
 }
