@@ -28,6 +28,7 @@
 		D1C4A0562B93975D004A62ED /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0552B93975D004A62ED /* MealSelectionView.swift */; };
 		D1C4A0582B939C11004A62ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0572B939C11004A62ED /* Date.swift */; };
 		D1C8812B2BA7535200EB3093 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D1C8812A2BA7535200EB3093 /* SwiftUICharts */; };
+		D1C8812D2BA7587B00EB3093 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8812C2BA7587B00EB3093 /* TutorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		D1C4A0532B938CCE004A62ED /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		D1C4A0552B93975D004A62ED /* MealSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSelectionView.swift; sourceTree = "<group>"; };
 		D1C4A0572B939C11004A62ED /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D1C8812C2BA7587B00EB3093 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				D1C4A04B2B93852B004A62ED /* Menu */,
 				D13FC1362B9CAE71004B3187 /* Weight */,
 				D135B6FD2B82581200FE4CB0 /* MainView.swift */,
+				D1C8812C2BA7587B00EB3093 /* TutorialView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				D1C4A0582B939C11004A62ED /* Date.swift in Sources */,
 				D13FC13C2B9CBCE7004B3187 /* SettingsView.swift in Sources */,
 				D135B6F22B82517200FE4CB0 /* Meal.swift in Sources */,
+				D1C8812D2BA7587B00EB3093 /* TutorialView.swift in Sources */,
 				D135B7052B8269B500FE4CB0 /* BackgroundButton.swift in Sources */,
 				D1C4A04F2B93857A004A62ED /* AddEntryView.swift in Sources */,
 				D135B6FE2B82581200FE4CB0 /* MainView.swift in Sources */,

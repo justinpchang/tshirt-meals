@@ -20,6 +20,8 @@ struct TodayView: View {
     @State var isShowingAddEntryView = false
     @State var isShowingDatePicker = false
     
+    @AppStorage("shouldShowTutorial") var shouldShowTutorial = true
+    
     var mealCountBySize: [Size: Int] {
         var counts: [Size: Int] = [:]
         
@@ -157,6 +159,9 @@ struct TodayView: View {
                 NavigationView {
                     AddEntryView().navigationBarTitle("Add entry", displayMode: .inline)
                 }
+            }
+            .sheet(isPresented: $shouldShowTutorial) {
+                TutorialView(isPresented: $shouldShowTutorial)
             }
         }
         .onAppear {

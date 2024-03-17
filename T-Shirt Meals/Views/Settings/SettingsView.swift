@@ -11,10 +11,18 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) var modelContext
     @Query var meals: [Meal]
+    @State var isShowingTutorial = false
     
     var body: some View {
         NavigationView {
             List {
+                Section(header: Text("Help")) {
+                    Button {
+                        isShowingTutorial = true
+                    } label: {
+                        Text("View tutorial")
+                    }
+                }
                 Section(header: Text("Danger Zone")) {
                     Button {
                         do {
@@ -53,6 +61,9 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+        }
+        .sheet(isPresented: $isShowingTutorial) {
+            TutorialView(isPresented: $isShowingTutorial)
         }
     }
     

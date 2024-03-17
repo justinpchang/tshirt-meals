@@ -94,7 +94,7 @@ struct WeightView: View {
                 return LineChartDataPoint(value: entry.weight, xAxisLabel: dateString, description: dateString)
             },
             pointStyle: PointStyle(),
-            style: LineStyle(lineColour: ColourStyle(colour: .red), lineType: .curvedLine)
+            style: LineStyle(lineColour: ColourStyle(colour: .blue), lineType: .curvedLine)
         )
         
         let metadata   = ChartMetadata(title: "Weight")
