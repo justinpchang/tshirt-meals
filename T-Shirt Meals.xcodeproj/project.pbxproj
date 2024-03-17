@@ -27,6 +27,7 @@
 		D1C4A0542B938CCE004A62ED /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0532B938CCE004A62ED /* EditEntryView.swift */; };
 		D1C4A0562B93975D004A62ED /* MealSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0552B93975D004A62ED /* MealSelectionView.swift */; };
 		D1C4A0582B939C11004A62ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C4A0572B939C11004A62ED /* Date.swift */; };
+		D1C8812B2BA7535200EB3093 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D1C8812A2BA7535200EB3093 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C8812B2BA7535200EB3093 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +199,9 @@
 			dependencies = (
 			);
 			name = "T-Shirt Meals";
+			packageProductDependencies = (
+				D1C8812A2BA7535200EB3093 /* SwiftUICharts */,
+			);
 			productName = "T-Shirt Meals";
 			productReference = D135B6DD2B824FD900FE4CB0 /* T-Shirt Meals.app */;
 			productType = "com.apple.product-type.application";
@@ -225,6 +230,9 @@
 				Base,
 			);
 			mainGroup = D135B6D42B824FD900FE4CB0;
+			packageReferences = (
+				D1C881292BA7535200EB3093 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+			);
 			productRefGroup = D135B6DE2B824FD900FE4CB0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -492,6 +500,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D1C881292BA7535200EB3093 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1C8812A2BA7535200EB3093 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1C881292BA7535200EB3093 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D135B6D52B824FD900FE4CB0 /* Project object */;
 }

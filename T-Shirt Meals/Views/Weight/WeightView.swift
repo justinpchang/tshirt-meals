@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SwiftUICharts
 
 struct WeightView: View {
     @Environment(\.modelContext) var modelContext
@@ -21,6 +22,10 @@ struct WeightView: View {
         NavigationView {
             ZStack {
                 VStack {
+                    if !weights.isEmpty {
+                        LineChart(chartData: chartData)
+                    }
+                    
                     List {
                         ForEach(weights) { entry in
                             HStack {
@@ -76,6 +81,51 @@ struct WeightView: View {
                 }
             }
         }
+    }
+    
+    var chartData: LineChartData {
+        let data = LineDataSet(
+            dataPoints: weights.reversed().map { entry in
+                // Convert the date to a string representation
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM d" // Month abbreviation followed by day of the month (e.g., "Mar 17")
+                let dateString = dateFormatter.string(from: entry.date)
+                
+                return LineChartDataPoint(value: entry.weight, xAxisLabel: dateString, description: dateString)
+            },
+            pointStyle: PointStyle(),
+            style: LineStyle(lineColour: ColourStyle(colour: .red), lineType: .curvedLine)
+        )
+        
+        let metadata   = ChartMetadata(title: "Weight")
+        
+        let gridStyle  = GridStyle(numberOfLines: 7,
+                                   lineColour   : Color(.lightGray).opacity(0.5),
+                                   lineWidth    : 1,
+                                   dash         : [8],
+                                   dashPhase    : 0)
+        
+        let chartStyle = LineChartStyle(infoBoxPlacement    : .infoBox(isStatic: false),
+                                        infoBoxBorderColour : Color.primary,
+                                        infoBoxBorderStyle  : StrokeStyle(lineWidth: 1),
+                                        
+                                        markerType          : .vertical(attachment: .line(dot: .style(DotStyle()))),
+                                        
+                                        xAxisGridStyle      : gridStyle,
+                                        xAxisLabelPosition  : .bottom,
+                                        xAxisLabelColour    : Color.primary,
+                                        xAxisLabelsFrom     : .dataPoint(rotation: .degrees(0)),
+                                        
+                                        yAxisGridStyle      : gridStyle,
+                                        yAxisLabelPosition  : .leading,
+                                        yAxisLabelColour    : Color.primary,
+                                        yAxisNumberOfLabels : 7,
+                                        
+                                        globalAnimation     : .easeOut(duration: 1))
+        
+        return LineChartData(dataSets       : data,
+                             metadata       : metadata,
+                             chartStyle     : chartStyle)   
     }
     
     private func addWeight() {
