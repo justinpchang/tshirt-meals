@@ -17,6 +17,8 @@ struct AddMenuMealView: View {
     @State var isInMenu = true
     @State var showAlert = false
     
+    @FocusState var isTitleInputFocused: Bool
+    
     var meal: Meal?
     var isEditing: Bool
     var onSave: ((_ meal: Meal) -> Void)?
@@ -36,6 +38,7 @@ struct AddMenuMealView: View {
             Form {
                 // Title
                 TextField("Title", text: $title)
+                    .focused($isTitleInputFocused)
                     .textFieldStyle(DefaultTextFieldStyle())
                 
                 // Size
@@ -68,6 +71,9 @@ struct AddMenuMealView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text("Please fill in all fields."))
             }
+        }
+        .onAppear {
+            isTitleInputFocused = true
         }
     }
     
