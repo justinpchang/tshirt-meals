@@ -14,6 +14,7 @@ struct WeightView: View {
     @Query(sort: \BodyWeightEntry.date, order: .reverse) var weights: [BodyWeightEntry]
     
     @State var weightInput: String = ""
+    @FocusState var isWeightInputFocused: Bool
     @State var isShowingInput = false
     
     var body: some View {
@@ -27,7 +28,7 @@ struct WeightView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                                 Spacer()
-                                Text("\(String(format: "%.2f", entry.weight)) lbs")
+                                Text("\(Int(entry.weight)) lbs")
                                     .font(.headline)
                             }
                         }
@@ -37,6 +38,7 @@ struct WeightView: View {
                 .toolbar {
                     Button {
                         isShowingInput = true
+                        isWeightInputFocused = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -54,6 +56,7 @@ struct WeightView: View {
                         
                         VStack {
                             TextField("Enter your weight", text: $weightInput)
+                                .focused($isWeightInputFocused)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 5)
